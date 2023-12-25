@@ -1,26 +1,27 @@
 import { PrismaClient } from "@prisma/client";
 import express from "express";
 import bcrypt from "bcrypt";
-import { authenticateToken } from "../middleware/auth";
+import { authenticateToken } from "@/utils/auth/jwt-helper";
 
 const prisma = new PrismaClient();
 
-const router = express.Router();
+export const userRoutes = express.Router();
 
-router.get("/", authenticateToken, async (req, res) => {
+userRoutes.get("/", authenticateToken, async (req, res) => {
   try {
     const user = await prisma.user.findMany({
-      take: 50
-    })
+      take: 50,
+    });
     res.json(user);
   } catch (error: any) {
     res.status(500).json({ error: error.message });
   }
 });
 
-router.post("/", async (req, res) => {
+userRoutes.post("/", authenticateToken, async (req, res) => {
   try {
     const hashPassowrd = await bcrypt.hash(req.body.password, 10);
+
     const userEntry = await prisma.user.create({
       data: {
         name: String(req.body.name),
@@ -32,5 +33,3 @@ router.post("/", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-
-export default router;
