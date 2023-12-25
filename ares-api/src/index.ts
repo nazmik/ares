@@ -1,4 +1,3 @@
-import { PrismaClient } from "@prisma/client";
 import express, { json } from "express";
 import dotenv from "dotenv";
 import cors from "cors";

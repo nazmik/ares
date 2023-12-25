@@ -1,19 +1,13 @@
 import jwt from "jsonwebtoken";
 import { Request, Response, NextFunction } from "express";
 
-export const jwtToken = ({
-  name,
-  password,
-}: {
-  name: string;
-  password: string;
-}) => {
-  const user = { name, password };
+export const jwtToken = ({ id, name }: { id: number; name: string }) => {
+  const user = { id, name };
   const accessToken = jwt.sign(user, process.env.ACCESS_SECRET_TOKEN!, {
-    expiresIn: "30s",
+    expiresIn: "60m",
   });
   const refreshToken = jwt.sign(user, process.env.REFRESH_SECRET_TOKEN!, {
-    expiresIn: "6m",
+    expiresIn: "1440m",
   });
   return { accessToken, refreshToken };
 };

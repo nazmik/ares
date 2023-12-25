@@ -1,13 +1,13 @@
 import { PrismaClient } from "@prisma/client";
 import express from "express";
 import bcrypt from "bcrypt";
-import { authenticateToken } from "@/utils/auth/jwt-helper";
+import { authenticateToken } from "../../../utils/auth/jwt-helper";
 
 const prisma = new PrismaClient();
 
 export const userRoutes = express.Router();
 
-userRoutes.get("/", authenticateToken, async (req, res) => {
+userRoutes.get("/", authenticateToken, async (_, res) => {
   try {
     const user = await prisma.user.findMany({
       take: 50,

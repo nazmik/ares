@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "antd": "^5.12.5",
+    "dotenv": "^16.3.1",
+    "jose": "^5.2.0",
     "jsonwebtoken": "^9.0.2",
     "next": "14.0.4",
     "react": "^18",

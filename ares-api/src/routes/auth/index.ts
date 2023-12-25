@@ -2,7 +2,7 @@ import express from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { PrismaClient } from "@prisma/client";
-import { jwtToken } from "@/utils/auth/jwt-helper";
+import { jwtToken } from "../../../utils/auth/jwt-helper";
 
 export const authRoutes = express.Router();
 const prisma = new PrismaClient();
@@ -29,7 +29,7 @@ authRoutes.post("/login", async (req, res) => {
     }
 
     //return jwt
-    let tokens = jwtToken(userEntry);
+    let tokens = jwtToken({ id: userEntry.id, name: userEntry.name });
     res.cookie("refresh__token", tokens.refreshToken, { httpOnly: true });
     res.json({ tokens });
   } catch (err: any) {
