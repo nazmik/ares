@@ -1,0 +1,22 @@
+POST http://localhost:5000/api/users
+Content-Type: application/json
+
+{
+	"name": "ares",
+	"password": "kaskas"
+}
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+	"name": "Rinor",
+	"password": "rkas"
+}
+
+###
+
+GET http://localhost:5000/api/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUmlub3IiLCJwYXNzd29yZCI6IiQyYiQxMCRQT3hmbWMuTHVGczhVVjVWRjF2Rm91T3ZQYXdPQTJHV2p1TFkwT2ZoRURSQnFaZjlSNlNZVyIsImlhdCI6MTcwMzQ3MDU0NCwiZXhwIjoxNzAzNDcwNTc0fQ.iVNQYN5yGz0yrzm2Ly30BtXHtTuV3hKiTelTbZi1bJg
