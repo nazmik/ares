@@ -4,4 +4,4 @@ dist
 
 .env
 
-.rest
+*.rest
