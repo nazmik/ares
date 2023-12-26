@@ -1,6 +1,6 @@
 "use client";
 
-import { Layout } from "../../component/aresLayout";
+import { Layout } from "@/component/layout/aresLayout";
 
 const About = () => {
   return (

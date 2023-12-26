@@ -11,6 +11,10 @@ userRoutes.get("/", authenticateToken, async (_, res) => {
   try {
     const user = await prisma.user.findMany({
       take: 50,
+      select: {
+        id: true,
+        name: true,
+      },
     });
     res.json(user);
   } catch (error: any) {
